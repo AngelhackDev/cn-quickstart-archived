@@ -74,17 +74,27 @@ $ cd quickstart
 # Setup your quickstart environment
 $ make setup
 
+# Sometimes, we need to clean all resources and rebuild
+$ source ./temp_env.sh && make clean-all
+
 # Build the application
-$ make build
+$ source ./temp_env.sh && make build
+
+# OR
+# $ source ./temp_env.sh && docker compose -f compose.yaml build
+
 
 # Start the application, Canton services, and Observability (if enabled)
-$ make start
+$ source ./temp_env.sh && make start
+
+# OR
+# $ source ./temp_env.sh && docker compose -f compose.yaml up
 
 # In a separate shell - run a Canton Console for the App Provider
-$ make console-app-provider
+$ source ./temp_env.sh && make console-app-provider
 
 # In a separate shell - run Daml Shell
-$ make shell
+$ source ./temp_env.sh && make shell
 ```
 
 If a container fails to start, there are a few things to try:

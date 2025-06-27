@@ -57,7 +57,7 @@ endif
 
 # Function to run docker-compose with default files and environment
 define docker-compose
-	docker compose $(DOCKER_COMPOSE_FILES) $(DOCKER_COMPOSE_ENVFILE) $(DOCKER_COMPOSE_PROFILES) $(1)
+	source ./temp_env.sh && docker compose $(DOCKER_COMPOSE_FILES) $(DOCKER_COMPOSE_ENVFILE) $(DOCKER_COMPOSE_PROFILES) $(1)
 endef
 
 # Helper to generate an "open URL" target
