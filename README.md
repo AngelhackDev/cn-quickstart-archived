@@ -75,7 +75,7 @@ $ cd quickstart
 $ make setup
 
 # Sometimes, we need to clean all resources and rebuild
-$ source ./temp_env.sh && make clean-all
+$ source ./temp_env.sh && make stop && make clean-all
 
 # Build the application
 $ source ./temp_env.sh && make build
@@ -92,9 +92,11 @@ $ source ./temp_env.sh && make start
 
 # In a separate shell - run a Canton Console for the App Provider
 $ source ./temp_env.sh && make console-app-provider
+# To close: $ exit
 
 # In a separate shell - run Daml Shell
 $ source ./temp_env.sh && make shell
+# To close: $ quit
 ```
 
 If a container fails to start, there are a few things to try:
