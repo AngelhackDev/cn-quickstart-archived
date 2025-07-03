@@ -72,7 +72,7 @@ services:
       - CREATE_DATABASE_11=sv
       - CREATE_DATABASE_12=keycloakdb
     ports:
-      - "${DB_PORT}:${DB_PORT}"
+      - "5433:${DB_PORT:-5432}"
     entrypoint: /postgres-entrypoint.sh
     healthcheck:
       test: "pg_isready -U ${DB_USER} -d keycloakdb"
@@ -153,7 +153,6 @@ services:
     depends_on:
       wallet-web-ui-sv:
         condition: service_healthy
-        required: false
       wallet-web-ui-app-provider:
         condition: service_healthy
       wallet-web-ui-app-user:
@@ -199,7 +198,6 @@ services:
     healthcheck:
       test: ["CMD", "bash", "/app/health-check.sh"]
       interval: 20s
-      start_interval: 5s
       timeout: 30s
       retries: 10
       start_period: 20s
@@ -232,7 +230,6 @@ services:
     healthcheck:
       test: ["CMD", "bash", "/app/health-check.sh"]
       interval: 20s
-      start_interval: 5s
       timeout: 40s
       retries: 100
       start_period: 30s
